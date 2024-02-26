@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C95A0E4A2B8C8A1F004994BA /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C95A0E482B8C8A1C004994BA /* MobileRTCResources.bundle */; };
+		C95A0E4C2B8C8A2A004994BA /* MobileRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95A0E492B8C8A1F004994BA /* MobileRTC.xcframework */; };
+		C95A0E4D2B8C8A2A004994BA /* MobileRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C95A0E492B8C8A1F004994BA /* MobileRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9E3B4C02B8C579300688907 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3B4BF2B8C579300688907 /* AppDelegate.swift */; };
 		C9E3B4C22B8C579300688907 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3B4C12B8C579300688907 /* SceneDelegate.swift */; };
 		C9E3B4C42B8C579300688907 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3B4C32B8C579300688907 /* ViewController.swift */; };
@@ -35,7 +38,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C95A0E4E2B8C8A2A004994BA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C95A0E4D2B8C8A2A004994BA /* MobileRTC.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		C95A0E482B8C8A1C004994BA /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobileRTCResources.bundle; sourceTree = "<group>"; };
+		C95A0E492B8C8A1F004994BA /* MobileRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MobileRTC.xcframework; sourceTree = "<group>"; };
 		C9E3B4BC2B8C579300688907 /* Cloud Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cloud Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E3B4BF2B8C579300688907 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E3B4C12B8C579300688907 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95A0E4C2B8C8A2A004994BA /* MobileRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +99,8 @@
 		C9E3B4B32B8C579200688907 = {
 			isa = PBXGroup;
 			children = (
+				C95A0E492B8C8A1F004994BA /* MobileRTC.xcframework */,
+				C95A0E482B8C8A1C004994BA /* MobileRTCResources.bundle */,
 				C9E3B4BE2B8C579300688907 /* Cloud Demo */,
 				C9E3B4D52B8C579400688907 /* Cloud DemoTests */,
 				C9E3B4DF2B8C579400688907 /* Cloud DemoUITests */,
@@ -137,6 +159,7 @@
 				C9E3B4B82B8C579200688907 /* Sources */,
 				C9E3B4B92B8C579200688907 /* Frameworks */,
 				C9E3B4BA2B8C579200688907 /* Resources */,
+				C95A0E4E2B8C8A2A004994BA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E3B4CC2B8C579400688907 /* LaunchScreen.storyboard in Resources */,
+				C95A0E4A2B8C8A1F004994BA /* MobileRTCResources.bundle in Resources */,
 				C9E3B4C92B8C579400688907 /* Assets.xcassets in Resources */,
 				C9E3B4C72B8C579300688907 /* Main.storyboard in Resources */,
 			);
