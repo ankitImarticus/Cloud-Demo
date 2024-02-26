@@ -6,31 +6,57 @@
 //
 
 import UIKit
-
-@main
+import MobileRTC
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    // Your JWT Token should NEVER be publicly accessible.
+    // We are hardcoding these values here for demonstration purposes only.
+    // For your production app, generate a JWT on the server side instead of storing it directly on the Client.
+    let jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBLZXkiOiJNNkpsVzJXRlNmNmwzYVA4Sm9JUGciLCJpYXQiOjE3MDg5NDUyODEsInRva2VuRXhwIjoxNzA4OTQ4ODgxLCJleHAiOjM0MTc5NzY5NjJ9.Xwczg36Df2iwuVqcvGJfEi2RnmOf9Z8R7vUStrBjKzc"
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        setupSDK(jwtToken: jwtToken)
         return true
     }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    /// setupSDK Creates, initializes, and authorizes an instance of the Meeting SDK. Call this before calling any other SDK functions.
+    /// - Parameters:
+    ///   - jwtToken: A valid generated JWT.
+    func setupSDK(jwtToken: String) {
+        // Create a MobileRTCSDKInitContext. This class contains attributes for determining how the SDK will be used. You must supply the context with a domain.
+        let context = MobileRTCSDKInitContext()
+        // The domain we will use is zoom.us
+        context.domain = "zoom.us"
+        // Turns on SDK logging. This is optional.
+        context.enableLog = true
+        // Call initialize(_ context: MobileRTCSDKInitContext) to create an instance of the Zoom SDK. Without initialization, the SDK will not be operational. This call will return true if the SDK was initialized successfully.
+        let sdkInitializedSuccessfully = MobileRTC.shared().initialize(context)
+        // Check if initialization was successful. Obtain a MobileRTCAuthService, this is for supplying credentials to the SDK for authorization.
+        if sdkInitializedSuccessfully == true, let authorizationService = MobileRTC.shared().getAuthService() {
+// Supply the SDK with a JWT.
+            authorizationService.jwtToken = jwtToken
+            // Assign AppDelegate to be a MobileRTCAuthDelegate to listen for authorization callbacks.
+            authorizationService.delegate = self
+            // Call sdkAuth to perform authorization.
+            authorizationService.sdkAuth()
+        }
     }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
-
 }
+// MARK: - MobileRTCAuthDelegate
+// Conform AppDelegate to MobileRTCAuthDelegate.
+// MobileRTCAuthDelegate listens to authorization events like SDK authorization, user login, etc.
+extension AppDelegate: MobileRTCAuthDelegate {
+    // Result of calling sdkAuth(). MobileRTCAuthError_Success represents a successful authorization.
+    func onMobileRTCAuthReturn(_ returnValue: MobileRTCAuthError) {
+        switch returnValue {
+        case MobileRTCAuthError.success:
+            print("SDK successfully initialized.")
+        case MobileRTCAuthError.tokenWrong:
+            assertionFailure("JWT Token Authentication is invalid.")
+        case MobileRTCAuthError.networkIssue:
+            print("network issue")
+        default:
+            assertionFailure("SDK Authorization failed with MobileRTCAuthError: \(returnValue).")
+        }
+    }
+  }
 
