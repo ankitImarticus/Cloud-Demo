@@ -33,11 +33,30 @@
                                     <constraint firstAttribute="height" constant="128" id="qAX-TX-eYJ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lr0-5r-hZV">
+                                <rect key="frame" x="76.666666666666686" y="514" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello Imarticus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4C-eN-yXs">
+                                        <rect key="frame" x="-3" y="40.333333333333371" width="246" height="47.666666666666657"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="39"/>
+                                        <color key="textColor" red="0.035294117649999998" green="0.44705882349999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="hMU-Ig-l7H"/>
+                                    <constraint firstAttribute="width" constant="240" id="l5q-K2-9Ug"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RVQ-6T-DHN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="2Ir-ft-UQN"/>
+                            <constraint firstItem="Lr0-5r-hZV" firstAttribute="top" secondItem="RVQ-6T-DHN" secondAttribute="bottom" constant="24" id="akX-Cc-XTi"/>
+                            <constraint firstItem="Lr0-5r-hZV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bod-7b-gCC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RVQ-6T-DHN" secondAttribute="trailing" constant="77" id="f2m-Uw-a3y"/>
                             <constraint firstItem="RVQ-6T-DHN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fpH-CJ-Mkw"/>
                         </constraints>
