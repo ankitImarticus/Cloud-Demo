@@ -16,7 +16,7 @@ class ViewController: UIViewController,MobileRTCMeetingServiceDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        meetingNumber =  "7411180111"
+        //meetingNumber =  "7411180111"
         meetingPassword =  "-1"
         username = "Pooja Pant Staging 2-3209582507266"
     }
